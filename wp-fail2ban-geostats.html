@@ -1,0 +1,29 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyDAXzLOy5aLgj25ti_FeCpHcna5JfJvlkM"></script>
+<script src="js/ipmapper-2016.js"></script>
+<style>
+  html, body, #map {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+</style>
+<script>
+$(function(){
+    try{
+       IPMapper.initializeMap("map");
+          var file = "block-list";
+          var ipArray = new Array();
+          $.get(file, function(data){
+              ipArray = data.split('\n');
+              //console.log("Raw array length is -" + ipArray.length);
+              IPMapper.addIPArray(ipArray);
+          });
+    } catch(e){
+        //handle error
+ Error; 	
+    }
+});
+</script>
+
+<div id="map"></div>
